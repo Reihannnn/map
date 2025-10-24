@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "webpack serve --mode development --open --no-hot",
-    "build": "webpack --mode production"
+    "build": "dist"
   },
   "keywords": [],
   "author": "",
