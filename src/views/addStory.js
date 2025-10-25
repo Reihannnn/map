@@ -84,6 +84,19 @@ export default function AddStory() {
         msgEl.innerHTML = `<div class="success">Story berhasil ditambahkan!</div>`;
         el.querySelector('#storyForm').reset();
 
+        try {
+          await fetch('/api/push/send', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              title: "Story baru berhasil ditambahkan!",
+              body: description || "Klik untuk melihat story baru",
+            })
+          });
+        } catch (pushErr) {
+          console.warn("Push gagal (abaikan jika backend belum dibuat):", pushErr);
+        }
+
         // ✅ Tambahkan ini agar langsung kembali ke halaman utama setelah sukses
         setTimeout(() => {
           location.hash = '/';
