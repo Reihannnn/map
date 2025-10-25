@@ -81,6 +81,7 @@ export default function AddStory() {
       const res = await postStory(formData);
 
       if (res && !res.error) {
+        alert("✅ Story berhasil ditambahkan!");
         msgEl.innerHTML = `<div class="success">Story berhasil ditambahkan!</div>`;
         el.querySelector('#storyForm').reset();
 
