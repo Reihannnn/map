@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.js'),
@@ -49,7 +51,13 @@ devServer: {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.html'),
       title: 'StoryMapApp'
-    })
+    }),
+    new CopyWebpackPlugin({
+    patterns: [
+      { from: "service-worker.js", to: "" },
+      { from: "offline.html", to: "" }
+    ]
+  })
   ],
   resolve: {
     extensions: ['.js']
